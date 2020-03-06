@@ -11,10 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/users")
@@ -27,9 +24,15 @@ public class UserController {
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<CreateUserResponse> createUser(@RequestBody CreateUserRequest userDetails) {
         ModelMapper modelMapper = ObjectMapperUtils.createModelMapper(MatchingStrategies.STRICT);
-        CreateUserResponse response = createUser(userDetails, modelMapper);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+        try {
+            CreateUserResponse response = createUser(userDetails, modelMapper);
+            return ResponseEntity.status(HttpStatus.CREATED).body(response);
+        } catch(Exception theException) {
+            return ResponseEntity.badRequest().build();
+        }
+
+       // return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     private CreateUserResponse createUser(@RequestBody CreateUserRequest userDetails, ModelMapper modelMapper) {
