@@ -8,7 +8,7 @@ spring:
       #config:
       #uri: http://config-server:8012
       #name: config-server
-      #failFast: true
+    #failFast: true
     #retry:
     #maxAttempts: 20
   cloud:

@@ -22,7 +22,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.DEFINED_PORT)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @TestPropertySource(properties = "server.port=8080")
 public class UserControllerTest {
     public static final String FIRST_NAME = "Obi-Wan";
@@ -61,6 +61,7 @@ public class UserControllerTest {
         assertEquals(HttpStatus.CREATED, result.getStatusCode());
         checkResult(request, result.getBody());
     }
+
     @Test
     public void duplicateEmail() {
         // Arrange
