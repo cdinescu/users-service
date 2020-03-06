@@ -1,0 +1,14 @@
+# Strongly recommend to set this property to "none" in a production environment!
+spring.jpa.hibernate.ddl-auto: update
+spring:
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL57Dialect
+
+spring.datasource:
+  url: jdbc:mysql://192.168.0.144:3308/users-db
+  username: stefan
+  password: wolfie
+
+spring.datasource.hikari.initializationFailTimeout: 60000

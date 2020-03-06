@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: user-service
+  profiles:
+    active:
+      default
+      #cloud:
+      #config:
+      #uri: http://config-server:8012
+      #name: config-server
+      #failFast: true
+    #retry:
+    #maxAttempts: 20
+  cloud:
+    config:
+      enabled: false
+    discovery:
+      enabled: false
+server:
+  port: 8080
+
